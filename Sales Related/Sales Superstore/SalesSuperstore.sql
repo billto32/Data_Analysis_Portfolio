@@ -127,7 +127,6 @@ group by sub_category, year,profit) n2
 where n2.rnk <= 10
 ;
 --Product with greatest loss
-
 select 
 		product_name,
 		year,
