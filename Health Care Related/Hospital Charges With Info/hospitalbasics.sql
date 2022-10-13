@@ -28,7 +28,7 @@ select * from hospitalinfo h1
 			select providerid,
 				count(*) over (partition by providerid) as c1 from hospitalinfo)h1 
 				where c1 >1;*/
---Drop NA, children hospital types are missing ratings
+--Drop NA, children hospital types are missing ratings. Create view alternative
 select count(hospitalrating) from hospitalinfo
 where hospitalrating = 'Not Available';
 
@@ -39,6 +39,8 @@ where hospitalrating = 'Not Available';
 select state, count(state) as total_hospital from hospitalinfo
 group by state
 order by total_hospital desc;
+/*Relationship between population  # of hospitals?*/
+
 --Hospital types//dropped childrens
 select hospitaltype, count(hospitaltype) from hospitalinfo
 group by hospitaltype;
@@ -48,7 +50,10 @@ group by hospitalownership
 order by hospitalownership, total_ownership_type desc;
 
 /*	select count(hospitalownership) as gov_owner from hospitalinfo
-where hospitalownership like 'Gov%' */
+where hospitalownership like 'Gov%'
+Majority of hospitals in US are non-profit
+*/
+
 --conditional aggregation, count(case()) provides total of all ownerships
 select 
 		sum(case when hospitalownership like 'Gov%' then 1 else 0 end) as "gov_owned",
@@ -59,6 +64,7 @@ from hospitalinfo
 select hospitalrating, count(hospitalrating) as total_hospitals from hospitalinfo
 group by hospitalrating
 order by hospitalrating;
+/*Quality of hospitals in US? Bell curved*/
 
 --Avg ratings by state (before data type change)
 select state, round(avg(cast(hospitalrating as decimal (10,2))),2) as avg_hospital_ratings
@@ -66,6 +72,8 @@ from hospitalinfo
 group by state
 order by avg_hospital_ratings
 limit 5;
+/* 4/5 of worst rated hospitals located in east coast */
+
 -- alternative ratings calc
 /*select h1.state, round(avg(cast(h1.hospitalrating as decimal (10,2))),2) as avg_hospital_ratings
 	from hospitalinfo h1
@@ -81,11 +89,6 @@ where state = 'DC'
 group by hospitalrating;
 
 -- Number of hospitals per state
-select state,count(hospitalrating) as total_hospitals from hospitalinfo
-group by state
-order by count(hospitalrating) desc
-limit 5;
-
 /*select h1.state, count(h1.hospitalrating)
 	from hospitalinfo h1
 	inner join hospitalinfo h2
@@ -112,15 +115,9 @@ select state,
 where hospitalrating = '5'
 group by state
 order by ratings desc;
-
--- % of hospitals in ea state to all hospitals in US
-select state,
-	round(100 * sum(hospitalrating)/ sum(sum(hospitalrating)) over (),2) as ratingratio
-	from hospitalinfo
-group by state
-order by ratingratio desc
-
-/*total sum per state / sum of all ratings*/
+/* 13.41% of total 5 collected ratings located in Texas 
+(total sum per state / sum of all ratings)
+*/
 
 --Most 1 ratings ratio
 select state,
@@ -129,6 +126,7 @@ select state,
 where hospitalrating = '1'
 group by state
 order by lowestratio desc;
+/* NY staggering amount of 1 ratings */
 
 select state,
 	count(hospitalrating) as oneratings

@@ -22,17 +22,17 @@ select providerid from hospitalcharges
 group by providerid
 having count(*) > 1;
 --top treatments
-select drgdef, count(drgdef) as totalop from hospitalcharges
+select drgdef, count(drgdef) as total_op from hospitalcharges
 group by drgdef
-order by totalop desc;
---
+order by total_op desc;
+-- State costs
 select state, 
 	max(avgcovercost) as maxcover, 
 	max(avgtotalpay) as maxtotal,
 	max(avgmedicarepay) as maxmedicare
 	from hospitalcharges
 group by state
-order by maxcover desc;
+order by maxcover, maxtotal, maxmedicare;
 
 select drgdef, 
 	sum(totaldischarge) as totaldischarge,
@@ -42,6 +42,7 @@ select drgdef,
 	from hospitalcharges
 group by drgdef
 order by totaldischarge desc
+/*Quality of treatment vs cost, treatment availablity vs cost */
 
 select drgdef, round(avg(avgtotalpay),2) as avgtotalpay from hospitalcharges
 group by drgdef
@@ -59,7 +60,8 @@ from
 	drgdef,state,avgtotalpay,
 	row_number() over (partition by drgdef order by avgtotalpay desc) rn
 	from hospitalcharges) a
-where rn = 1
+where rn = 1;
+/*Highest total payment by state for ea treatment*/
 
 select drgdef,state,avgtotalpay
 from (
@@ -67,36 +69,80 @@ from (
 	rank() over(order by avgtotalpay desc) rnk
 	from hospitalcharges) a
 where rnk <= 10
--- 
+-- Total types of treatments by state
 select drgdef, state, count(drgdef) as totaltreatments from hospitalcharges
 group by drgdef,state
 order by totaltreatments desc;
 
+
 /*Joining with hospitalinfo analysis*/
 
 -- rating with avgtotalpayment
-select hi.hospitalname,hi.state, hi.hospitalrating, hc.avgtotalpay from hospitalinfo_bckup hi
-inner join hospitalcharges hc
-on hi.providerid = hc.providerid
-order by hc.avgtotalpay desc;
+with hospital as(
+	select 
+			hi.hospitalname as name,
+			hi.state as state, 
+			hi.hospitalrating as rating, 
+			hc.avgtotalpay as avgtotalpay,
+			hc.avgcovercost as avgcovercost,
+			hc.avgmedicarepay as avgmedicarepay
+	from hospitalinfo_bckup hi
+	inner join hospitalcharges hc
+	on hi.providerid = hc.providerid
+	order by hc.avgtotalpay desc
+)
+select name, state, rating, round(avg(avgtotalpay),2) as avgtotalpay from hospital
+group by name , state, rating 
+order by avgtotalpay desc;
+/*Relationship between rating as cost? Factor in treatment types */
+with hospital as(
+	select 
+			hi.hospitalname as name,
+			hi.state as state, 
+			hi.hospitalrating as rating, 
+			hc.drgdef as treatment,
+			hc.avgtotalpay as avgtotalpay,
+			hc.avgcovercost as avgcovercost,
+			hc.avgmedicarepay as avgmedicarepay
+	from hospitalinfo_bckup hi
+	inner join hospitalcharges hc
+	on hi.providerid = hc.providerid
+	order by hc.avgtotalpay desc
+)
+select name, state, rating, treatment, round(avg(avgtotalpay),2) as avgtotalpay from hospital
+group by name , state, rating , treatment
+order by avgtotalpay desc;
 
-select hi.hospitalname, hi.state, hi.hospitalrating, hc.avgtotalpay from hospitalinfo_bckup hi
-inner join hospitalcharges hc
-on hi.providerid = hc.providerid
-where hi.hospitalrating not like '%Not%' and hi.state ='DC'
-order by hc.avgtotalpay desc;
---in ('1','2','3','4','5')
---
+--Specific States
+with hospital as(
+	select 
+			hi.hospitalname as name,
+			hi.state as state, 
+			hi.hospitalrating as rating, 
+			hc.avgtotalpay as avgtotalpay,
+			hc.avgcovercost as avgcovercost,
+			hc.avgmedicarepay as avgmedicarepay
+	from hospitalinfo_bckup hi
+	inner join hospitalcharges hc
+	on hi.providerid = hc.providerid
+	order by hc.avgtotalpay desc
+)
+select name , state, rating , round(avg(avgtotalpay),2) as avgtotalpay from hospital
+where rating not like '%Not%' and state ='DC'
+group by name, state, rating
+order by avgtotalpay desc;
+
+-- Type + Cost 
 select hi.state, hi.hospitaltype, round(avg(hc.avgtotalpay),2) as avgpayment from hospitalinfo_bckup hi
 left join hospitalcharges hc
-on hi.providerid = hc.providerid 
+	on hi.providerid = hc.providerid 
 where hc.avgtotalpay notnull
 group by hi.hospitaltype,hi.state
 order by avgpayment desc;
 
 select hi.hospitalownership, round(avg(hc.avgtotalpay),2) as avgpayment from hospitalinfo_bckup hi
 inner join hospitalcharges hc
-on hi.providerid = hc.providerid
+	on hi.providerid = hc.providerid
 group by hi.hospitalownership
 order by avgpayment desc;
 
