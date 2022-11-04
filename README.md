@@ -13,25 +13,33 @@ Exploring the popular dvdrental database.
 Using two datasets to explore the hospitals within the US. 
 Basic usage of SQL and exploring costs.
 ### Synthetic Hospital Data 
-Project consists of randomly generated data to create a simple hospital patient dashboard.
+Project consists of generated data based off of NYC Hospital Inpatient Discharge dataset to create a visually appealing hospital patient dashboard.
+That optimizes and provides valueable information about daily and monthly influxes within a hospital.
+Details the performances of doctors and divisions alongside with costs of treatments.
+Explores the effects of how cost effects ratings, risk level of ethinicty, age and the cost and quality of treatment through different states.
 ### NY Hospital Data
 Exploration of a more in-depth information of hospitals within NY. Operates with the synthetic hospital dashboard.
 
 ## Sales Related Projects
 ### Guided Sales Project
-Introduction to PowerBI, through excelisfun. Basic dashboard provides daily, yearly, and fiscal revenue.
+Introductory guided project that introduces methology to creating basic dashboard provides daily, yearly, and fiscal revenue.
 ### Superstore 
-Applys knowledge learnt from guided project to attempt a visually appealing dashboard. Dashboard analyzes sub-category sales. 
-Explores sales data through SQL.
+Applys knowledge learnt from guided project to attempt a visually appealing dashboard. 
+Dashboard provides visualization highlighting key points in sales data. Provides an overview of how sales are performing to optimize production, and boost sales.
+Explores sales data at finding sources that are affecting profits, finding poorly sold months, the ranking of goods sold. 
+In turn helps cut production costs, and shipping fees.
 
 ## Insurance Related Projects
 ### Insurance Fraud
-Finding out what the chances of fraud occuring based off of vechile information and insurance.
+Projects main purpose is finding out what the chances of fraud occuring based off of vechile information and insurance.
+Visually appealing dashboard displays a key overview of claims, vechile information, and demographics.
+Intro project provides an overview of demographics of those that entered an accident. Shows how often certain car models, and people are most likely to get into an accident.
+Secondary section inspects which accident are most likely to trigger fraud detection. Highlights key points as to what demographics are most likely to perform fraud.
 
 ## HR Related Projects
 ### HR Attrition
-Focuses on attrition rates of a company data set. Looks into how satisfaction, tenure, and distance from work effects the attrition rates.
-Missing dates, would provide with better insight and when employees leave.
+Explores attrition rates within a company using the IBM attrition dataset found on kaggle. Uses survey information that shows how well employee enjoy their time within the company. Alongside with how distance effects satisfcation.
+Displays a simple yet appealing dashboard that highlights key factors that may affect employee attrition rates in 2 dashboards. 
 
 ## Data Cleaning
 Focuses on Excel cleaning process.
