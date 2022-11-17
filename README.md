@@ -6,7 +6,9 @@ Works include Excel, SQL, and PowerBI. Future plan to in Tableau.
 ## SQL Exploration
 Looking at data through SQL. Applying knowledge learnt from exercise problems.
 ### DVD Rental Database
-Exploring the popular dvdrental database.
+Exploring the popular dvdrental database, operating with a large database. Discovering how certain genres of dvd influence consumer consumption choices.
+Determing whether rating effects rental rates. Examines international dvd consumption and how physical stores perform. Looking into how rental
+return rates and potential solutions to negagte late returns.
 
 ## Health Care Projects
 ### Hospitals Information
