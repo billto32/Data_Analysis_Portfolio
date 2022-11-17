@@ -17,10 +17,16 @@ Project consists of generated data based off of NYC Hospital Inpatient Discharge
 That optimizes and provides valueable information about daily and monthly influxes within a hospital.
 Details the performances of doctors and divisions alongside with costs of treatments.
 Explores the effects of how cost effects ratings, risk level of ethinicty, age and the cost and quality of treatment through different states.
-[![Hospital-Info.png](https://i.postimg.cc/KvxYcPrm/Hospital-Info.png)](https://postimg.cc/Sj14DzvP)
 
 ### NY Hospital Data
 Exploration of a more in-depth information of hospitals within NY. Operates with the synthetic hospital dashboard.
+
+## HR Related Projects
+### HR Attrition
+Explores attrition rates within a company using the IBM attrition dataset found on kaggle. Uses survey information that shows how well employee enjoy their time within the company. Alongside with how distance effects satisfcation.
+Displays a simple yet appealing dashboard that highlights key factors that may affect employee attrition rates in 2 dashboards. 
+[![HR-Attrittion-1.png](https://i.postimg.cc/BZ11dnY0/HR-Attrittion-1.png)](https://postimg.cc/dDw1CwcH)
+<img src="https://i.postimg.cc/gjKnNph3/HRv2.gif" width="1200" height = "500">
 
 ## Sales Related Projects
 ### Guided Sales Project
@@ -40,12 +46,6 @@ Intro project provides an overview of demographics of those that entered an acci
 Secondary section inspects which accident are most likely to trigger fraud detection. Highlights key points as to what demographics are most likely to perform fraud.
 [![Car-Insurance-Claims.png](https://i.postimg.cc/XqMKTG9r/Car-Insurance-Claims.png)](https://postimg.cc/vgz6nmqy)
 
-## HR Related Projects
-### HR Attrition
-Explores attrition rates within a company using the IBM attrition dataset found on kaggle. Uses survey information that shows how well employee enjoy their time within the company. Alongside with how distance effects satisfcation.
-Displays a simple yet appealing dashboard that highlights key factors that may affect employee attrition rates in 2 dashboards. 
-[![HR-Attrittion-1.png](https://i.postimg.cc/BZ11dnY0/HR-Attrittion-1.png)](https://postimg.cc/dDw1CwcH)
-[![HR-Attrition-2.png](https://i.postimg.cc/4yZZLP2n/HR-Attrition-2.png)](https://postimg.cc/mzd0hYsG)
 
 ## Data Cleaning
 Focuses on Excel cleaning process.
