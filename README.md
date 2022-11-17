@@ -17,6 +17,7 @@ Project consists of generated data based off of NYC Hospital Inpatient Discharge
 That optimizes and provides valueable information about daily and monthly influxes within a hospital.
 Details the performances of doctors and divisions alongside with costs of treatments.
 Explores the effects of how cost effects ratings, risk level of ethinicty, age and the cost and quality of treatment through different states.
+[![Host.png](https://i.postimg.cc/8zfwXXyj/Host.png)](https://postimg.cc/mPRQtjWs)
 
 ### NY Hospital Data
 Exploration of a more in-depth information of hospitals within NY. Operates with the synthetic hospital dashboard.
@@ -25,8 +26,8 @@ Exploration of a more in-depth information of hospitals within NY. Operates with
 ### HR Attrition
 Explores attrition rates within a company using the IBM attrition dataset found on kaggle. Uses survey information that shows how well employee enjoy their time within the company. Alongside with how distance effects satisfcation.
 Displays a simple yet appealing dashboard that highlights key factors that may affect employee attrition rates in 2 dashboards. 
-[![HR-Attrittion-1.png](https://i.postimg.cc/BZ11dnY0/HR-Attrittion-1.png)](https://postimg.cc/dDw1CwcH)
-<img src="https://i.postimg.cc/gjKnNph3/HRv2.gif" width="1200" height = "500">
+[![HR-Attrittion-1.gif](https://i.postimg.cc/jjQHBpyd/HR-Attrittion-1.gif)](https://postimg.cc/yJx3Zrfw)
+[![HRv2-1.gif](https://i.postimg.cc/rybrZV7N/HRv2-1.gif)](https://postimg.cc/rz1sKkVD)
 
 ## Sales Related Projects
 ### Guided Sales Project
